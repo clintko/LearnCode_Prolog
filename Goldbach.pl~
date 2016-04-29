@@ -1,0 +1,85 @@
+/**
+  GoldbachConjecture:
+    - Every even integer greater than 2 can be expressed as 
+      the sum of two primes.
+    - Best-known unsolved problem in number theory
+    - To this day, the conjecture has been shown to 
+      hold up through 4 กั 10 18 .
+    */
+
+
+
+% Rule: isFactor
+% param:  X; first input number
+% param:  Y; second input number
+% output: return true if X is a factor of Y
+% desc:   if isFactor(X, Y) true, Y mod X is 0
+zero(0).
+isFactor(X, Y) :-
+    Result is mod(Y, X),
+    zero(Result).
+    
+% Rule: isPrime
+% param:  Num; a number
+% output: return true if input number is a prime number
+% desc:   
+isPrime(2).
+isPrime(3).
+isPrime(Num) :- 
+     Num > 1,
+     Threshold is round(Num**0.5) + 1,
+     checkPrime(Threshold, Num).
+
+% Rule: checkPrime
+% param: X
+% param: Num
+% output:
+checkPrime(1, Num) :- Num > 1. % base case
+checkPrime(X, Num) :-          % recursive case
+     X > 1,
+     NextX is X-1,
+     % check the process of function
+     % write(X),
+     % write(NextX), nl,
+     \+ (isFactor(X, Num)),
+     checkPrime(NextX, Num).
+
+% Rule: checkBothPrime
+% helper function that check whether both input numbers are prime
+% param X
+% param Y
+checkBothPrime(X, Y) :-
+    isPrime(X),
+    isPrime(Y).
+
+    % print if both are prim
+    % write(X), write(" "), write(Y), nl,
+    % guarentee false statement
+    % X < 0.                              
+    
+
+% Rule: GoldbachConj
+% param: Even; an even number
+goldbachConj(EvenNum) :-
+    % check even
+    EvenNum > 0, isFactor(2, EvenNum),
+
+    %
+    Num is EvenNum/2,
+    findGoldbach(Num, EvenNum).
+    
+% Rule: findGoldbach
+% param: X
+% param: EvenNum
+findGoldbach(1, EvenNum) :- EvenNum > 0.    
+findGoldbach(X, EvenNum) :-
+    Y is EvenNum - X,
+    write(X), write(" "), write(Y), 
+    write(" | "), write(EvenNum), nl.
+    % \+ checkBothPrime(X, Y),
+    %
+    % NextX is X-1,
+    % findGoldbach(NextX, EvenNum).
+
+    
+    

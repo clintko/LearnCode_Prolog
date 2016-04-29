@@ -1,0 +1,29 @@
+/* Youtube_Programming In Prolog Part 2 - Syntax, Questions and Structs */
+/* Topics: Variables, Questions/Compound Questions, Rules, Structs */
+
+/* weather(City, Season, Temp). */
+weather(phoenix, summer, hot).
+weather(la, summer, warm).
+weather(phoenix, winter, warm).
+
+/* variables */
+/* weather(City, summer, hot). */
+/* City = phoenix. */
+/* weather(City, _, hot). */
+/* City = la. */
+/* City = phoenix. */
+
+/* compound question */
+/* weather(City, summer, hot), weather(City, winter, warm). */
+/* City = phoenix. */
+
+/* Rules */
+/* relationship(object, .., object) :- relationship(object, object) */
+/*          HEAD                    IF          BODY  */
+
+warmer_than(C1, C2) :-
+
+
+
+
+    

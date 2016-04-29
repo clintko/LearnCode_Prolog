@@ -1,0 +1,33 @@
+/**
+  Youtube: Programming In Prolog Part 3
+    Scope, Structures and Arithmetic Operations
+  Topic:
+    - Struct
+    - Scope
+    - Operators & Arithmetic Functions
+    - SWISH (an online IDE for writing Prolog
+    */
+
+/* Struct */
+% suppose that there is a course separated into two classes
+course(
+    cse340,          
+    time(1200, 1300),
+    instructor(bryce, holton),
+    coor300
+).
+
+course(
+    cse340,
+    time(1200, 1300),
+    instructor(ivan, andersen),
+    coor500
+).
+
+%
+instructor(Instructtor, Class) :-
+    course(Class,
+           _,
+           _, 
+           Instructor,
+           _).
