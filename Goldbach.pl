@@ -25,10 +25,9 @@ isFactor(X, Y) :-
 %   whether any one is a factor of Num
 %   if none of them is a factor of Num, Num is a prime number
 isPrime(2).
-isPrime(3).
 isPrime(Num) :- 
      Num > 1,
-     Threshold is round(Num**0.5) + 1,
+     Threshold is round(Num**0.5),
      checkPrime(Threshold, Num).
 
 % Rule: checkPrime
@@ -95,13 +94,13 @@ goldbachConj(EvenNum) :-
 findGoldbach(1, EvenNum) :- EvenNum > 0. % base case    
 findGoldbach(X, EvenNum) :-              % recursive
     Y is EvenNum - X,
-    % write(X), write(" "), write(Y), 
-    % write(" | "), write(EvenNum), nl,
+    
+    % if both prime, print in the console
+    % note: "\+" is "not"
     \+ checkBothPrime(X, Y),
     
     % recursive
     NextX is X-1,
     findGoldbach(NextX, EvenNum).
 
-    
     
